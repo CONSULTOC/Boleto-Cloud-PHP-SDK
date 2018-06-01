@@ -1,5 +1,5 @@
  # Boleto Cloud PHP SDK
- ---
+
  
  #### -- Introduction
  This is a wrapper to [BoletoCloud](boletocloud.cloud) Api.
