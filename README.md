@@ -41,3 +41,7 @@ new BoletoCloudPayer($name, $cprf, $cep, $uf, $city, $district, $street, $number
 #### -- Contributing
 
 Do you wanna contribute? Just make your improvements, and send to me. Please make a useful description about your changes.
+
+*****
+
+###### Note: This is an unofficial SDK. We haven't nothing to do with BoletoCloud.
