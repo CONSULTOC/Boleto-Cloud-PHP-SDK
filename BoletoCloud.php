@@ -181,13 +181,17 @@ class BoletoCloud {
 	}
 	
 	public function save($path,$filename){
-		$base = $_SERVER['DOCUMENT_ROOT'] . Yii::app()->request->baseUrl;
-		$path = substr($path,-1) == '/' ? $path . $filename : $path . '/' . $filename;
-		$url = (substr($path,0,1) == '/') ? $base . $path  : $base . '/' . $path;
-		$handle = fopen($url,'w+');
-		fwrite($handle, $this->getBody());
-		fclose($handle);
-		return true;
+		if($this->getHttpCode() == BoletoCloud::HTTP_RESPONSE_OK){
+			$base = $_SERVER['DOCUMENT_ROOT'] . Yii::app()->request->baseUrl;
+			$path = substr($path,-1) == '/' ? $path . $filename : $path . '/' . $filename;
+			$url = (substr($path,0,1) == '/') ? $base . $path  : $base . '/' . $path;
+			$handle = fopen($url,'w+');
+			fwrite($handle, $this->getBody());
+			fclose($handle);
+			return true;
+		} else {
+			throw new Exception("Ocorreu um erro: ".$this->getBody());
+		}
 	}
 	
 	public function setResponseHeader($header){
